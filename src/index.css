@@ -1,0 +1,176 @@
+:root {
+  --bg: #f0eaee;
+  --card: #faf6f9;
+  --input: #e6dde3;
+  --border: #d2c4cd;
+  --text: #2c2229;
+  --muted: #74636e;
+  --green: #8a3b6b;
+  --green-hover: #712f57;
+  --green-text: #ffffff;
+  --red: #b3453f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #191419;
+    --card: #231c23;
+    --input: #2e252e;
+    --border: #41364a;
+    --text: #efe5ee;
+    --muted: #b3a1b0;
+    --green: #d27fb2;
+    --green-hover: #de97c3;
+    --green-text: #2a0f20;
+    --red: #e07a73;
+  }
+}
+
+/* Page */
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg) !important;
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.container {
+  color: var(--text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.card-title,
+.modal-title,
+.form-label {
+  color: var(--text);
+}
+
+.text-secondary,
+.form-text {
+  color: var(--muted) !important;
+}
+
+/* Cards */
+.card {
+  background-color: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text);
+  border-radius: 12px;
+  box-shadow: var(--shadow) !important;
+}
+
+/* Primary button (Add New Student, Add Student) */
+.btn-primary {
+  background-color: var(--green);
+  border-color: var(--green);
+  color: var(--green-text);
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: var(--green-hover) !important;
+  border-color: var(--green-hover) !important;
+  color: var(--green-text) !important;
+}
+
+/* Close button in modal footer */
+.btn-outline-secondary {
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--input);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* Delete button */
+.btn-outline-danger {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.btn-outline-danger:hover {
+  background-color: transparent;
+  color: var(--red);
+  opacity: 0.8;
+}
+
+/* Student count badge */
+.badge.bg-primary {
+  background-color: var(--green) !important;
+  color: var(--green-text) !important;
+}
+
+/* Form inputs */
+.form-control {
+  background-color: var(--input);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.form-control::placeholder {
+  color: var(--muted);
+}
+
+.form-control:focus {
+  background-color: var(--input);
+  color: var(--text);
+  border-color: var(--green);
+  box-shadow: 0 0 0 0.2rem rgba(79, 174, 127, 0.25);
+}
+
+/* Modal */
+.modal-content {
+  background-color: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.modal-header,
+.modal-footer {
+  border-color: var(--border);
+}
+
+.modal-backdrop.show {
+  background-color: #000 !important;
+  opacity: 0.55 !important;
+}
+
+/* Make the X button visible in dark mode */
+@media (prefers-color-scheme: dark) {
+  .btn-close {
+    filter: invert(1);
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
