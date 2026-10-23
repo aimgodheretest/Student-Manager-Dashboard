@@ -1,5 +1,5 @@
 import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
-import { useStudents } from "../context/StudentContext";
+import { useStudents } from "../context/useStudents";
 
 const StudentList = () => {
   const { students, deleteStudent } = useStudents();
