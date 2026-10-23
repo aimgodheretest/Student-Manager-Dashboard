@@ -92,15 +92,15 @@ const AddStudentModal = ({ show, onClose }) => {
       <Form noValidate onSubmit={handleSubmit}>
         <Modal.Body>
           <Form.Group className="mb-3">
-            <Form.Label>Full Name</Form.Label>
+            <Form.Label htmlFor="student-name">Full Name</Form.Label>
             <Form.Control
+              id="student-name"
               type="text"
               name="name"
               placeholder="Enter student name"
               value={formData.name}
               onChange={handleChange}
-              isInvalid={Boolean(errors.name)}
-              autoComplete="name"
+              isInvalid={!!errors.name}
             />
             <Form.Control.Feedback type="invalid">
               {errors.name}
@@ -110,41 +110,37 @@ const AddStudentModal = ({ show, onClose }) => {
           <Row>
             <Col md={12}>
               <Form.Group className="mb-3">
-                <Form.Label>Mobile Number</Form.Label>
+                <Form.Label htmlFor="student-mobile">Mobile Number</Form.Label>
+
                 <Form.Control
+                  id="student-mobile"
                   type="tel"
                   name="mobile"
                   placeholder="Enter mobile number"
                   value={formData.mobile}
                   onChange={handleChange}
-                  isInvalid={Boolean(errors.mobile)}
                   maxLength={10}
-                  inputMode="numeric"
-                  autoComplete="tel"
+                  isInvalid={!!errors.mobile}
                 />
+
                 <Form.Control.Feedback type="invalid">
                   {errors.mobile}
                 </Form.Control.Feedback>
-                <Form.Text muted>Enter a 10-digit mobile number.</Form.Text>
               </Form.Group>
             </Col>
           </Row>
 
           <Form.Group className="mb-3">
-            <Form.Label>Address</Form.Label>
+            <Form.Label htmlFor="student-address">Address</Form.Label>
             <Form.Control
+              id="student-address"
               as="textarea"
               rows={3}
               name="address"
               placeholder="Enter student address"
               value={formData.address}
               onChange={handleChange}
-              isInvalid={Boolean(errors.address)}
-              autoComplete="street-address"
             />
-            <Form.Control.Feedback type="invalid">
-              {errors.address}
-            </Form.Control.Feedback>
           </Form.Group>
         </Modal.Body>
 
