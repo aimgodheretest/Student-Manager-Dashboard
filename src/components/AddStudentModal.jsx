@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Modal, Form, Button, Row, Col } from "react-bootstrap";
-import { useStudents } from "../context/StudentContext";
-
+import { useStudents } from "../context/useStudents";
 const initialForm = {
   name: "",
   mobile: "",
@@ -140,7 +139,11 @@ const AddStudentModal = ({ show, onClose }) => {
               placeholder="Enter student address"
               value={formData.address}
               onChange={handleChange}
+              isInvalid={!!errors.address}
             />
+            <Form.Control.Feedback type="invalid">
+              {errors.address}
+            </Form.Control.Feedback>
           </Form.Group>
         </Modal.Body>
 

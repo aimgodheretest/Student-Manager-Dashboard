@@ -1,6 +1,5 @@
-import { createContext, useState } from "react";
-
-const StudentContext = createContext();
+import { useState } from "react";
+import { StudentContext } from "./StudentContextValue";
 
 export const StudentProvider = ({ children }) => {
   const [students, setStudents] = useState([]);

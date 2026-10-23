@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { StudentContext } from "./StudentContext";
+import { StudentContext } from "./StudentContextValue";
 
 export const useStudents = () => {
   return useContext(StudentContext);

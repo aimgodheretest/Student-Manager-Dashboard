@@ -1,14 +1,14 @@
 import { afterEach, describe, it, expect, vi } from "vitest";
 import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import AddStudentModal from "./AddStudentModal";
-import { useStudents } from "../context/StudentContext";
+import { useStudents } from "../context/useStudents";
 
 afterEach(() => {
   cleanup();
   vi.clearAllMocks();
 });
 
-vi.mock("../context/StudentContext", () => ({
+vi.mock("../context/useStudents", () => ({
   useStudents: vi.fn(),
 }));
 

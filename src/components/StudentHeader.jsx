@@ -1,5 +1,5 @@
 import { Container, Button } from "react-bootstrap";
-import { useStudents } from "../context/StudentContext";
+import { useStudents } from "../context/useStudents";
 
 const StudentHeader = ({ onAddClick }) => {
   const { students } = useStudents();
