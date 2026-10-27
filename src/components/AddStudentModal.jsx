@@ -58,19 +58,11 @@ const AddStudentModal = ({ show, onClose }) => {
       return;
     }
 
-    const result = addStudent({
+    addStudent({
       name: formData.name.trim(),
       mobile: formData.mobile.trim(),
       address: formData.address.trim(),
     });
-
-    if (!result.success) {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [result.field]: result.message,
-      }));
-      return;
-    }
 
     setFormData(initialForm);
     setErrors({});
