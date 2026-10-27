@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Alert, Button, Card, Spinner } from "react-bootstrap";
-import { useStudents } from "../context/useStudents";
+import { useStudents } from "../context/StudentContext";
 import { generateStudentInsights } from "../services/gemini";
 
 const AIStudentInsights = () => {

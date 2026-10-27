@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { StudentContext } from "./StudentContextValue";
+import { createContext, useContext, useState } from "react";
+
+const StudentContext = createContext();
 
 export const StudentProvider = ({ children }) => {
   const [students, setStudents] = useState([]);
@@ -74,4 +75,8 @@ export const StudentProvider = ({ children }) => {
   return (
     <StudentContext.Provider value={value}>{children}</StudentContext.Provider>
   );
+};
+
+export const useStudents = () => {
+  return useContext(StudentContext);
 };
