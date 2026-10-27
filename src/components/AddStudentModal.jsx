@@ -11,7 +11,6 @@ const initialForm = {
 const AddStudentModal = ({ show, onClose }) => {
   const { addStudent } = useStudents();
   const [formData, setFormData] = useState(initialForm);
-  const [errors, setErrors] = useState({});
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -20,68 +19,24 @@ const AddStudentModal = ({ show, onClose }) => {
       ...prevData,
       [name]: value,
     }));
-
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: "",
-    }));
-  };
-
-  const validateForm = () => {
-    const nextErrors = {};
-    const name = formData.name.trim();
-    const mobile = formData.mobile.trim();
-    const address = formData.address.trim();
-
-    if (!name) {
-      nextErrors.name = "Student name cannot be empty.";
-    }
-
-    if (!/^\d{10}$/.test(mobile)) {
-      nextErrors.mobile = "Enter a valid 10-digit mobile number.";
-    }
-
-    if (!address) {
-      nextErrors.address = "Address cannot be empty.";
-    }
-
-    return nextErrors;
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const validationErrors = validateForm();
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length > 0) {
-      return;
-    }
-
-    addStudent({
-      name: formData.name.trim(),
-      mobile: formData.mobile.trim(),
-      address: formData.address.trim(),
-    });
+    addStudent(formData);
 
     setFormData(initialForm);
-    setErrors({});
-    onClose();
-  };
-
-  const handleClose = () => {
-    setFormData(initialForm);
-    setErrors({});
     onClose();
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered>
+    <Modal show={show} onHide={onClose} centered>
       <Modal.Header closeButton>
         <Modal.Title>Add New Student</Modal.Title>
       </Modal.Header>
 
-      <Form noValidate onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Modal.Body>
           <Form.Group className="mb-3">
             <Form.Label>Full Name</Form.Label>
@@ -91,12 +46,8 @@ const AddStudentModal = ({ show, onClose }) => {
               placeholder="Enter student name"
               value={formData.name}
               onChange={handleChange}
-              isInvalid={Boolean(errors.name)}
-              autoComplete="name"
+              required
             />
-            <Form.Control.Feedback type="invalid">
-              {errors.name}
-            </Form.Control.Feedback>
           </Form.Group>
 
           <Row>
@@ -109,14 +60,10 @@ const AddStudentModal = ({ show, onClose }) => {
                   placeholder="Enter mobile number"
                   value={formData.mobile}
                   onChange={handleChange}
-                  isInvalid={Boolean(errors.mobile)}
+                  pattern="[0-9]{10}"
                   maxLength={10}
-                  inputMode="numeric"
-                  autoComplete="tel"
+                  required
                 />
-                <Form.Control.Feedback type="invalid">
-                  {errors.mobile}
-                </Form.Control.Feedback>
                 <Form.Text muted>Enter a 10-digit mobile number.</Form.Text>
               </Form.Group>
             </Col>
@@ -131,21 +78,13 @@ const AddStudentModal = ({ show, onClose }) => {
               placeholder="Enter student address"
               value={formData.address}
               onChange={handleChange}
-              isInvalid={Boolean(errors.address)}
-              autoComplete="street-address"
+              required
             />
-            <Form.Control.Feedback type="invalid">
-              {errors.address}
-            </Form.Control.Feedback>
           </Form.Group>
         </Modal.Body>
 
         <Modal.Footer>
-          <Button
-            variant="outline-secondary"
-            type="button"
-            onClick={handleClose}
-          >
+          <Button variant="outline-secondary" type="button" onClick={onClose}>
             Close
           </Button>
 
